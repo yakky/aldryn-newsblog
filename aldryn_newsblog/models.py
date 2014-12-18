@@ -13,8 +13,8 @@ class PublishedManager(models.Manager):
         super(PublishedManager, self).__init__()
         self.is_published = is_published
 
-    def get_query_set(self):
-        return super(PublishedManager, self).get_query_set().filter(
+    def get_queryset(self):
+        return super(PublishedManager, self).get_queryset().filter(
             is_published=self.is_published)
 
 
