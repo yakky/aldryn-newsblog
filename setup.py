@@ -6,7 +6,7 @@ REQUIREMENTS = [
     'django-filer',
     'aldryn-common',
     'django-appdata',
-    'django-cms>=3.0.90a1',
+    'django-cms>=3.0.9a1',
     'aldryn-people',
     'django-reversion>=1.8.2,<1.9',
     'django>=1.6,<1.7',
