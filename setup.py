@@ -45,7 +45,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     dependency_links=[
-        'git+https://github.com/yakky/django-cms@future/integration#egg=django-cms-3.0.90a3',
+        'git+https://github.com/yakky/django-cms@future/integration#egg=django-cms-3.0.9a3',
         'git+https://github.com/aldryn/aldryn-apphooks-config#egg=aldryn-apphooks-config-0.1.0',
     ],
 )
