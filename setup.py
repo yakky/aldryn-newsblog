@@ -6,7 +6,7 @@ REQUIREMENTS = [
     'django-filer',
     'aldryn-common',
     'django-appdata',
-    'django-cms>=3.0.9a1',
+    'django-cms>=3.0.9',
     'aldryn-people',
     'django-reversion>=1.8.2,<1.9',
     'django>=1.6,<1.7',
@@ -45,7 +45,6 @@ setup(
     include_package_data=True,
     zip_safe=False,
     dependency_links=[
-        'git+https://github.com/yakky/django-cms@future/integration#egg=django-cms-3.0.9a3',
         'git+https://github.com/aldryn/aldryn-apphooks-config#egg=aldryn-apphooks-config-0.1.0',
     ],
 )
