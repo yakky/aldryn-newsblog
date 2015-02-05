@@ -4,6 +4,7 @@ source = aldryn_newsblog
 omit =
     aldryn_newsblog/south_migrations/*
     aldryn_newsblog/migrations/*
+    aldryn_newsblog/tests/*
 
 [report]
 exclude_lines =
