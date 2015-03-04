@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
@@ -47,6 +48,15 @@ class ArticleAdmin(VersionedPlaceholderAdminMixin,
         make_published, make_unpublished,
     )
 
+    def get_form(self, request, obj=None, **kwargs):
+        published_by_default = models.NewsBlogConfig.get_config_data(
+            request, 'published_by_default', obj, 'app_config',
+            getattr(settings, 'ALDRYN_NEWSBLOG_DEFAULT_PUBLISHED', True))
+
+        form = super(ArticleAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['is_published'].initial = published_by_default
+        return form
+
     def add_view(self, request, *args, **kwargs):
         data = request.GET.copy()
         try:
@@ -60,8 +70,8 @@ class ArticleAdmin(VersionedPlaceholderAdminMixin,
 admin.site.register(models.Article, ArticleAdmin)
 
 
-class NewsBlogConfigAdmin(TranslatableAdmin, BaseAppHookConfig):
+class NewsBlogConfigAdmin(BaseAppHookConfig, TranslatableAdmin):
     def get_config_fields(self):
-        return ('app_title', )
+        return ('app_title', 'config.published_by_default')
 
 admin.site.register(models.NewsBlogConfig, NewsBlogConfigAdmin)

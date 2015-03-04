@@ -11,6 +11,7 @@ from django.utils.text import slugify as default_slugify
 from django.utils.translation import get_language, ugettext_lazy as _
 from django.contrib.auth.models import User
 
+from aldryn_apphooks_config.fields import AppHookConfigField
 from aldryn_categories.fields import CategoryManyToManyField
 from aldryn_people.models import Person
 from aldryn_reversion.core import version_controlled_content
@@ -68,7 +69,7 @@ class Article(TranslatableModel):
     author = models.ForeignKey(Person, null=True, blank=True,
                                verbose_name=_('author'))
     owner = models.ForeignKey(User, verbose_name=_('owner'))
-    app_config = models.ForeignKey(NewsBlogConfig,
+    app_config = AppHookConfigField(NewsBlogConfig,
                                    verbose_name=_('app_config'))
     categories = CategoryManyToManyField('aldryn_categories.Category',
                                          verbose_name=_('categories'),

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from aldryn_apphooks_config.utils import setup_config
@@ -17,5 +18,5 @@ class NewsBlogConfig(TranslatableModel, AppHookConfig):
 
 
 class NewsBlogConfigForm(AppDataForm):
-    pass
+    published_by_default=forms.BooleanField(required=False, initial=True)
 setup_config(NewsBlogConfigForm, NewsBlogConfig)
