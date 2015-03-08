@@ -62,6 +62,6 @@ admin.site.register(models.Article, ArticleAdmin)
 
 class NewsBlogConfigAdmin(TranslatableAdmin, BaseAppHookConfig):
     def get_config_fields(self):
-        return ('app_title', )
+        return ('app_title', 'config.random_field')
 
 admin.site.register(models.NewsBlogConfig, NewsBlogConfigAdmin)

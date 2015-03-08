@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django import forms
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -17,5 +18,5 @@ class NewsBlogConfig(TranslatableModel, AppHookConfig):
 
 
 class NewsBlogConfigForm(AppDataForm):
-    pass
+    random_field = forms.CharField()
 setup_config(NewsBlogConfigForm, NewsBlogConfig)
