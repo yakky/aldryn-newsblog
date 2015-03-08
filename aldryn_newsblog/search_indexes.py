@@ -27,12 +27,13 @@ class ArticleIndex(get_index_base()):
         filter_kwargs = self.get_index_kwargs(language)
         qs = self.get_index_queryset(language)
         if filter_kwargs:
-            return qs.translated(language, **filter_kwargs)
-        return qs
+            return qs.translated(language, **filter_kwargs).language(language)
+        else:
+            return qs.language(language)
 
     def get_index_queryset(self, language):
-        return self.get_model().objects.published().active_translations(
-            language_code=language)
+        return self.get_model().objects.active_translations(
+            language_code=language).published()
 
     def get_model(self):
         return Article
